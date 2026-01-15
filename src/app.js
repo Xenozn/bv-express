@@ -12,7 +12,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 
 const app = express();
 
-// Swagger config
+// Config swagger
 const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
