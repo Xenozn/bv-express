@@ -1,6 +1,6 @@
-# 🏍️ API de Motos
+# 🏍️ BV Express
 
-Une API REST pour la gestion de catalogue de motos, incluant une authentification sécurisée et des outils de recherche performants.
+API Express avec l'intégration du builder bvbuilder
 
 ---
 
@@ -72,12 +72,6 @@ L'API sera accessible par défaut sur `http://localhost:3000`
 ## ✨ Fonctionnalités Principales
 
 - ** Authentification JWT** : Sécurisation des accès par jeton JSON Web Token
-- ** Recherche Approfondie** : Filtres avancés pour trouver des motos par critères spécifiques (marque, modèle, année, prix, etc.)
-- ** Pagination** : Système de pagination intégré pour une navigation fluide des résultats
-- ** Gestion CRUD Complète** : Création, lecture, mise à jour et suppression de motos
-- ** Validation des Données** : Vérification automatique des données entrantes
-- ** Performance Optimisée** : Requêtes optimisées et mise en cache
-
 ---
 
 ## 📖 Documentation API (Swagger)
@@ -112,15 +106,15 @@ npm run test:coverage
 ## 📁 Structure du Projet
 
 ```
-api-motos/
+bbv-express/
 ├── src/
 │   ├── controllers/     # Logique métier des routes
 │   ├── models/          # Modèles de données
 │   ├── routes/          # Définition des routes API
 │   ├── middlewares/     # Middlewares (auth, validation, etc.)
-│   ├── utils/           # Fonctions utilitaires
 │   └── config/          # Configuration de l'application
 ├── tests/               # Tests unitaires et d'intégration
+├── .env                 # Configuration
 ├── .env.example         # Exemple de configuration
 ├── .gitignore
 ├── package.json
@@ -132,6 +126,7 @@ api-motos/
 ## 🛠️ Technologies Utilisées
 
 - **Node.js** - Environnement d'exécution JavaScript
+- **Bvbuilder** - Permet de build, model,controller, route et table via commande
 - **Express.js** - Framework web minimaliste
 - **MySql** - Base de données SQL
 - **JWT** - Authentification par jetons

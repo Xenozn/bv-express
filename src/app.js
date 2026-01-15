@@ -14,9 +14,9 @@ const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Moto API Documentation',
+            title: 'BV Express API Documentation',
             version: '1.0.0',
-            description: 'Documentation interactive de mon API de motos',
+            description: 'Documentation interactive de mon API',
         },
         servers: [{ url: 'http://localhost:3000' }],
 
