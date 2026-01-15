@@ -1,37 +1,33 @@
-const db = require('../../config/db');
+const User = require('../models/userModel');
 
+// --- RÉCUPÉRER MON PROFIL (Via Token) ---
 exports.getMe = async (req, res) => {
     try {
-        // L'ID vient du middleware authMiddleware (req.userId)
-        const [users] = await db.query(
-            'SELECT id, email, nom, prenom, role, createdAt FROM users WHERE id = ?',
-            [req.userId]
-        );
+        // req.userId est injecté par votre authMiddleware
+        const user = await User.findById(req.userId);
 
-        if (users.length === 0) {
+        if (!user) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
         }
 
-        res.json({ status: "success", data: users[0] });
+        res.json({ status: "success", data: user });
     } catch (error) {
         res.status(500).json({ status: "error", message: error.message });
     }
 };
 
+// --- RÉCUPÉRER UN UTILISATEUR PAR ID (Paramètre URL) ---
 exports.getUserById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const [users] = await db.query(
-            'SELECT id, email, nom, prenom, role, createdAt FROM users WHERE id = ?',
-            [id]
-        );
+        const user = await User.findById(id);
 
-        if (users.length === 0) {
+        if (!user) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
         }
 
-        res.json({ status: "success", data: users[0] });
+        res.json({ status: "success", data: user });
     } catch (error) {
         res.status(500).json({ status: "error", message: error.message });
     }

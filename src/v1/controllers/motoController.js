@@ -1,4 +1,4 @@
-const db = require('../../config/db');
+const Moto = require('../models/motoModel');
 
 exports.getAllMotos = async (req, res) => {
     try {
@@ -6,12 +6,11 @@ exports.getAllMotos = async (req, res) => {
         const limit = Number.parseInt(req.query.limit) || 10;
         const offset = (page - 1) * limit;
 
-        const [rows] = await db.query(
-            'SELECT * FROM motos LIMIT ? OFFSET ?',
-            [limit, offset]
-        );
-
-        const [[{ total }]] = await db.query('SELECT COUNT(*) as total FROM motos');
+        // On lance les deux promesses en parallèle pour gagner en performance
+        const [rows, total] = await Promise.all([
+            Moto.findAllPaging(limit, offset),
+            Moto.countAll()
+        ]);
 
         res.status(200).json({
             status: "success",
