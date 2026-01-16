@@ -49,7 +49,7 @@ DB_USER=
 DB_PASS=
 DB_NAME=moto
 ```
-
+Mettre egalement le code de db.sql dans votre base de données pour al gestion des users les role : admin / user
 ---
 
 ## 🏃 Lancement du Projet
@@ -96,10 +96,6 @@ Le projet intègre des tests unitaires pour garantir la fiabilité des fonctionn
 npm test
 ```
 
-Pour exécuter les tests avec la couverture de code :
-```bash
-npm run test:coverage
-```
 
 ---
 

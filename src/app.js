@@ -42,6 +42,12 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
+const uiOptions = {
+    swaggerOptions: {
+        persistAuthorization: true, // Garde le token JWT après un refresh F5
+    },
+};
+
 // --- MIDDLEWARES ---
 app.use(express.json());
 app.use(logger);
@@ -73,6 +79,7 @@ versions.forEach(version => {
 
 
 // --- DOCS ---
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, uiOptions));
 
 module.exports = app;
